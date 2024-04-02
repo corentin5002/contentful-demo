@@ -1,21 +1,32 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+  gap: 5rem;
 }
 
 .description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   font-size: 0.85rem;
   max-width: var(--max-width);
   width: 100%;
   z-index: 2;
   font-family: var(--font-mono);
+  gap: 1rem
+}
+
+.description__element{
+  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  transition: .3s ease;
+}
+
+.description__element:hover{
+    background-color: rgba(var(--callout-rgb));
 }
 
 .description a {

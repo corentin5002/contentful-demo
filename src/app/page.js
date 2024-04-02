@@ -18,12 +18,13 @@ async function fetchData(request) {
 export default async function Home() {
 
     const data = await fetchData({
-        content_type: 'manga-2',
+        content_type: 'page',
         locale: 'fr',
+        order: 'fields.pageName'
     })
 
 
-    console.log("[debug]", data[0].sys.environment)
+    console.log("[debug]", data)
     return (
         <main className={styles.main}>
             <div className={styles.description}>
@@ -32,15 +33,13 @@ export default async function Home() {
 
             <div className={styles.description}>
 
-                {/*{data.map((item, index) => {*/}
+                {data.map((page, index) => {
 
-                {/*    console.log("[debug]", index ,item)*/}
-                {/*    return ( <div key={index}>*/}
-                {/*        <h2>{item.fields.title}</h2>*/}
-                {/*        /!*<RichText richText={item.fields.description} />*!/*/}
-                {/*    </div>)*/}
-                {/*})}*/}
-                <MangasDisplay data={data} />
+                    return ( <div key={index} className={styles.description__element}>
+                        <h2>{page.fields.pageName}</h2>
+                        {/*<RichText richText={item.fields.description} />*/}
+                    </div>)
+                })}
             </div>
 
         </main>
