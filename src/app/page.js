@@ -17,17 +17,13 @@ async function fetchData(request) {
 
 export default async function Home() {
 
-    console.log("[debug]")
-    // fetchData('produits')
-    //     .then(data => {console.log("[NONO]",data)})
-    //     .catch(error => {console.error(error)})
     const data = await fetchData({
         content_type: 'manga-2',
         locale: 'fr',
     })
 
 
-    console.log("[debug]", data)
+    console.log("[debug]", data[0].sys.environment)
     return (
         <main className={styles.main}>
             <div className={styles.description}>
