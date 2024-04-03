@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import { contentfulClient } from '../component/contentfulClient';
 import RichText from "@madebyconnor/rich-text-to-jsx";
-import MangasDisplay from "@/component/MangasDisplay";
+import PersonDisplay from "@/component/PersonDisplay";
 
 async function fetchData(request) {
     const response = await contentfulClient.getEntries(request);
@@ -23,8 +23,6 @@ export default async function Home() {
         order: 'fields.pageName'
     })
 
-
-    console.log("[debug]", data)
     return (
         <main className={styles.main}>
             <div className={styles.description}>
@@ -42,6 +40,9 @@ export default async function Home() {
                 })}
             </div>
 
+            <div className={styles.description}>
+                <PersonDisplay />
+            </div>
         </main>
     );
 }
