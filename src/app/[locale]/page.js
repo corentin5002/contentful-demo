@@ -39,9 +39,7 @@ export default async function Home({params}) {
                 })}
             </div>
 
-            <div className={styles.description}>
-                <PersonDisplay params={params}/>
-            </div>
+            <PersonDisplay params={params}/>
         </main>
     );
 }
