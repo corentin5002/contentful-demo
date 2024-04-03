@@ -4,8 +4,8 @@ import styles from "@/app/page.module.css";
 import RichText from "@madebyconnor/rich-text-to-jsx";
 import Image from "next/image";
 export default function PersonDisplayClient({ data }) {
-    console.log("[debug] data",data)
-    console.log("[debug] AVATAR", data[0].fields.avatar)
+    // console.log("[debug] data",data)
+    // console.log("[debug] AVATAR", data[0].fields.avatar)
 
     return (<div className={styles.grid}>
         {data.map((item, index) => {

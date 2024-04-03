@@ -1,13 +1,12 @@
-import styles from "@/app/page.module.css";
-import RichText from "@madebyconnor/rich-text-to-jsx";
 import {contentfulClient} from "@/component/contentfulClient";
 import PersonDisplayClient from "@/component/PersonDisplayClient";
 
-async function fetchMangaList() {
+async function fetchMangaList(params) {
 
     const request = {
         content_type: 'topicPerson',
-        locale: 'en-US',
+        locale: params.locale === 'defaults' ? 'fr' : params.locale,
+
     }
     const response = await contentfulClient.getEntries(request);
 
@@ -19,9 +18,9 @@ async function fetchMangaList() {
 }
 
 
-export default async function PersonDisplay() {
+export default async function PersonDisplay({params}) {
 
-    const data = await fetchMangaList();
+    const data = await fetchMangaList(params);
 
     return (
         <PersonDisplayClient data={data}/>

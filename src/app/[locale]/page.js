@@ -1,6 +1,5 @@
-import styles from "./page.module.css";
-import { contentfulClient } from '../component/contentfulClient';
-import RichText from "@madebyconnor/rich-text-to-jsx";
+import styles from "@/app/page.module.css";
+import { contentfulClient } from '@/component/contentfulClient';
 import PersonDisplay from "@/component/PersonDisplay";
 
 async function fetchData(request) {
@@ -15,11 +14,11 @@ async function fetchData(request) {
 
 
 
-export default async function Home() {
+export default async function Home({params}) {
 
     const data = await fetchData({
         content_type: 'page',
-        locale: 'fr',
+        locale: params.locale === 'defaults' ? 'fr' : params.locale,
         order: 'fields.pageName'
     })
 
@@ -41,7 +40,7 @@ export default async function Home() {
             </div>
 
             <div className={styles.description}>
-                <PersonDisplay />
+                <PersonDisplay params={params}/>
             </div>
         </main>
     );
